@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Vendor Performance Evaluation</title>
+  <style>
+    body {
+      font-family: 'Arial', sans-serif;
+      background-color: #f4f4f4;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      min-height: 100vh;
+      margin: 0;
+    }
+
+    form {
+      display: flex;
+      flex-direction: column;
+      max-width: 600px;
+      margin: 20px;
+      padding: 30px;
+      background-color: #ffffff;
+      border-radius: 10px;
+      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+    }
+
+    h2 {
+      text-align: center;
+      color: #333;
+      margin-bottom: 20px;
+    }
+
+    .form-group {
+      margin-bottom: 20px;
+    }
+
+    label {
+      display: block;
+      margin-bottom: 5px;
+      font-weight: 500;
+      color: #555;
+    }
+
+    input[type="number"], textarea, select {
+      width: 100%;
+      padding: 10px;
+      margin-top: 5px;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+      font-size: 14px;
+      box-sizing: border-box;
+    }
+
+    textarea {
+      resize: vertical;
+    }
+
+    button {
+      padding: 10px 15px;
+      background-color: #007BFF;
+      color: #ffffff;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      font-size: 16px;
+      transition: background-color 0.3s ease;
+    }
+
+    button:hover {
+      background-color: #0056b3;
+    }
+
+    button:active {
+      background-color: #004085;
+    }
+  </style>
+</head>
+<body>
+  <form id="performance-form">
+    <h2>Vendor Performance Evaluation</h2>
+    <div class="form-group">
+      <label for="vendor">Vendor:</label>
+      <select id="vendor" name="vendor" required>
+        <!-- Populate dynamically with vendors -->
+      </select>
+    </div>
+
+    <div class="form-group">
+      <label for="rating">Rating (0-5):</label>
+      <input type="number" id="rating" name="rating" required min="0" max="5" step="0.1">
+    </div>
+
+    <div class="form-group">
+      <label for="review">Review:</label>
+      <textarea id="review" name="review" rows="4" placeholder="Enter review"></textarea>
+    </div>
+
+    <div class="form-group">
+      <button type="submit">Submit Evaluation</button>
+    </div>
+  </form>
+
+  <script>
+    // Load vendors dynamically from the server
+    async function loadVendors() {
+      try {
+        const response = await fetch('/get-vendors'); // Fetch vendors from server
+        const vendors = await response.json();
+        
+        if (vendors.length === 0) {
+          alert('No vendors available');
+          return;
+        }
+
+        const vendorSelect = document.getElementById('vendor');
+        vendors.forEach(vendor => {
+          const option = document.createElement('option');
+          option.value = vendor.id; // Assuming vendor has 'id' and 'name'
+          option.textContent = vendor.name;
+          vendorSelect.appendChild(option);
+        });
+      } catch (error) {
+        console.error('Error loading vendors:', error);
+        alert('Error loading vendors.');
+      }
+    }
+
+    // Call the loadVendors function when the page loads
+    window.onload = loadVendors;
+
+    // Handle form submission
+    document.getElementById('performance-form').addEventListener('submit', async function(e) {
+      e.preventDefault();
+
+      const vendor = document.getElementById('vendor').value;
+      const rating = document.getElementById('rating').value;
+      const review = document.getElementById('review').value;
+
+      const performanceData = {
+        vendor,
+        rating,
+        review
+      };
+
+      try {
+        const response = await fetch('/submit-performance-evaluation', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json'
+          },
+          body: JSON.stringify(performanceData)
+        });
+
+        const result = await response.json();
+
+        if (response.ok) {
+          alert('Performance evaluation submitted successfully!');
+        } else {
+          alert('Error: ' + result.error);
+        }
+      } catch (error) {
+        console.error('Error:', error);
+        alert('An error occurred while submitting the evaluation.');
+      }
+    });
+  </script>
+</body>
+</html>

@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Contract Initiation</title>
+  <style>
+    body {
+        font-family: Arial, sans-serif;
+        background-color: #f4f4f9;
+        margin: 0;
+        padding: 0;
+    }
+
+    h2 {
+        text-align: center;
+        margin-top: 20px;
+        color: #4A90E2;
+    }
+
+    form {
+        display: flex;
+        flex-direction: column;
+        max-width: 500px;
+        margin: 20px auto;
+        padding: 20px;
+        background-color: #ffffff;
+        border-radius: 12px;
+        box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+    }
+
+    .form-group {
+        margin-bottom: 20px;
+    }
+
+    label {
+        font-weight: bold;
+        color: #333333;
+        margin-bottom: 5px;
+        display: block;
+    }
+
+    input[type="text"], input[type="date"], select, textarea {
+        width: 100%;
+        padding: 12px;
+        border: 1px solid #cccccc;
+        border-radius: 6px;
+        font-size: 14px;
+        background-color: #f9f9f9;
+        color: #333333;
+        transition: border-color 0.3s;
+    }
+
+    input:focus, textarea:focus, select:focus {
+        border-color: #4A90E2;
+        outline: none;
+    }
+
+    textarea {
+        resize: vertical;
+    }
+
+    button {
+        padding: 14px;
+        background-color: #4A90E2;
+        color: white;
+        font-size: 16px;
+        font-weight: bold;
+        border: none;
+        border-radius: 6px;
+        cursor: pointer;
+        transition: background-color 0.3s, transform 0.2s;
+    }
+
+    button:hover {
+        background-color: #3a78c2;
+        transform: scale(1.02);
+    }
+
+    button:active {
+        transform: scale(0.98);
+    }
+  </style>
+</head>
+<body>
+  <h2>Contract Initiation</h2>
+  <form id="contract-form">
+    <div class="form-group">
+      <label for="vendor">Vendor:</label>
+      <select id="vendor" name="vendor" required>
+        <!-- Populate dynamically with vendors -->
+      </select>
+    </div>
+
+    <div class="form-group">
+      <label for="department">Department:</label>
+      <select id="department" name="department" required>
+        <!-- Populate dynamically with departments -->
+      </select>
+    </div>
+
+    <div class="form-group">
+      <label for="start-date">Start Date:</label>
+      <input type="date" id="start-date" name="start-date" required>
+    </div>
+
+    <div class="form-group">
+      <label for="end-date">End Date:</label>
+      <input type="date" id="end-date" name="end-date" required>
+    </div>
+
+    <div class="form-group">
+      <label for="contract-details">Contract Details:</label>
+      <textarea id="contract-details" name="contract-details" rows="4" placeholder="Enter contract details"></textarea>
+    </div>
+
+    <div class="form-group">
+      <button type="submit">Initiate Contract</button>
+    </div>
+  </form>
+
+  <script>
+    document.getElementById('contract-form').addEventListener('submit', async function(e) {
+      e.preventDefault();
+
+      const vendor = document.getElementById('vendor').value;
+      const department = document.getElementById('department').value;
+      const startDate = document.getElementById('start-date').value;
+      const endDate = document.getElementById('end-date').value;
+      const contractDetails = document.getElementById('contract-details').value;
+
+      const contractData = {
+        vendor,
+        department,
+        startDate,
+        endDate,
+        contractDetails
+      };
+
+      try {
+        const response = await fetch('/initiate-contract', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json'
+          },
+          body: JSON.stringify(contractData)
+        });
+
+        const result = await response.json();
+
+        if (response.ok) {
+          alert('Contract initiated successfully!');
+        } else {
+          alert('Error: ' + result.error);
+        }
+      } catch (error) {
+        console.error('Error:', error);
+        alert('An error occurred while initiating the contract.');
+      }
+    });
+  </script>
+</body>
+</html>

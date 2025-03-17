@@ -1,0 +1,131 @@
+<form id="vendor-form">
+    <div class="form-group">
+        <label for="vendor-name">Vendor Name:</label>
+        <input type="text" id="vendor-name" name="vendor-name" required placeholder="Enter vendor name">
+    </div>
+    
+    <div class="form-group">
+        <label for="contact-info">Contact Info:</label>
+        <input type="email" id="contact-info" name="contact-info" required placeholder="Enter vendor contact info">
+    </div>
+    
+    <div class="form-group">
+        <label for="certifications">Compliance Certifications:</label>
+        <textarea id="certifications" name="certifications" rows="4" placeholder="Enter certifications (if any)"></textarea>
+    </div>
+    
+    <div class="form-group">
+        <label for="rating">Rating (0 - 5):</label>
+        <input type="number" id="rating" name="rating" step="0.01" min="0" max="5" required placeholder="Enter rating (0-5)">
+    </div>
+    
+    <div class="form-group">
+        <button type="submit" class="submit-btn">Register Vendor</button>
+    </div>
+</form>
+
+<style>
+    form {
+        display: flex;
+        flex-direction: column;
+        max-width: 500px;
+        margin: 20px auto;
+        padding: 20px;
+        background-color: #f5f7fa;
+        border-radius: 10px;
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+    }
+
+    .form-group {
+        margin-bottom: 15px;
+    }
+
+    label {
+        font-weight: bold;
+        color: #4a4e69;
+    }
+
+    input[type="text"], input[type="email"], input[type="number"], textarea {
+        width: 100%;
+        padding: 12px;
+        margin-top: 5px;
+        border: 1px solid #c3c8d5;
+        border-radius: 6px;
+        font-size: 14px;
+        outline: none;
+        transition: border-color 0.3s, box-shadow 0.3s;
+    }
+
+    input[type="text"]:focus, input[type="email"]:focus, input[type="number"]:focus, textarea:focus {
+        border-color: #6a0572;
+        box-shadow: 0 0 5px rgba(106, 5, 114, 0.5);
+    }
+
+    textarea {
+        resize: vertical;
+    }
+
+    button {
+        padding: 12px 20px;
+        background-color: #6a0572;
+        color: white;
+        font-size: 16px;
+        border: none;
+        cursor: pointer;
+        border-radius: 6px;
+        transition: background-color 0.3s, transform 0.3s;
+    }
+
+    button:hover {
+        background-color: #4a0072;
+        transform: scale(1.05);
+    }
+
+    button:focus {
+        outline: none;
+        box-shadow: 0 0 5px rgba(106, 5, 114, 0.5);
+    }
+</style>
+
+<script>
+  // Handle form submission with JavaScript
+  document.getElementById('vendor-form').addEventListener('submit', async function(e) {
+      e.preventDefault();  // Prevent default form submission
+
+      // Collect form data
+      const vendorName = document.getElementById('vendor-name').value;
+      const contactInfo = document.getElementById('contact-info').value;
+      const certifications = document.getElementById('certifications').value;
+      const rating = document.getElementById('rating').value;
+
+      const vendorData = {
+          vendorName,
+          contactInfo,
+          certifications,
+          rating
+      };
+
+      // Submit form data via POST request
+      try {
+          const response = await fetch('/register-vendor', {
+              method: 'POST',
+              headers: {
+                  'Content-Type': 'application/json'
+              },
+              body: JSON.stringify(vendorData)
+          });
+
+          const result = await response.json();
+
+          // Handle response
+          if (response.ok) {
+              alert('Vendor registered successfully!');
+          } else {
+              alert('Error: ' + result.error);
+          }
+      } catch (error) {
+          console.error('Error:', error);
+          alert('An error occurred while registering the vendor.');
+      }
+  });
+</script>
