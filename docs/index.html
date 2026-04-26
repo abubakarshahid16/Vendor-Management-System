@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Vendor Management Demo</title>
+  <style>
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      background: linear-gradient(135deg, #eef3fb, #f7f8fc);
+      color: #203044;
+    }
+    .hero {
+      padding: 72px 24px 42px;
+      text-align: center;
+      background: radial-gradient(circle at top left, rgba(0,123,255,0.18), transparent 32%),
+                  radial-gradient(circle at top right, rgba(106,5,114,0.14), transparent 28%);
+    }
+    .hero h1 {
+      margin: 0 0 14px;
+      font-size: 48px;
+    }
+    .hero p {
+      max-width: 840px;
+      margin: 0 auto 26px;
+      font-size: 18px;
+      line-height: 1.6;
+      color: #4e5d73;
+    }
+    .cta-row {
+      display: flex;
+      gap: 14px;
+      justify-content: center;
+      flex-wrap: wrap;
+    }
+    .btn {
+      display: inline-block;
+      padding: 14px 22px;
+      border-radius: 999px;
+      text-decoration: none;
+      font-weight: 700;
+    }
+    .btn-primary {
+      background: #007bff;
+      color: white;
+    }
+    .btn-secondary {
+      background: white;
+      color: #203044;
+      border: 1px solid #d6dfeb;
+    }
+    .container {
+      max-width: 1180px;
+      margin: 0 auto;
+      padding: 0 24px 64px;
+    }
+    .section {
+      margin-top: 28px;
+      background: white;
+      border-radius: 24px;
+      box-shadow: 0 18px 38px rgba(24, 39, 75, 0.08);
+      padding: 28px;
+    }
+    .section h2 {
+      margin-top: 0;
+      font-size: 30px;
+    }
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 24px;
+      margin-top: 20px;
+    }
+    .card {
+      background: #f8fbff;
+      border-radius: 18px;
+      overflow: hidden;
+      border: 1px solid #e3ebf5;
+    }
+    .card img {
+      width: 100%;
+      display: block;
+    }
+    .card .copy {
+      padding: 18px;
+    }
+    .card h3 {
+      margin: 0 0 10px;
+      font-size: 24px;
+    }
+    .list {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 18px;
+      margin-top: 18px;
+    }
+    .pill {
+      background: #f8fbff;
+      padding: 18px;
+      border-radius: 16px;
+      border: 1px solid #e3ebf5;
+    }
+    .pill strong {
+      display: block;
+      margin-bottom: 8px;
+      color: #0056b3;
+    }
+    .footer {
+      margin-top: 26px;
+      color: #5a6b82;
+      font-size: 14px;
+      text-align: center;
+    }
+    @media (max-width: 900px) {
+      .grid, .list { grid-template-columns: 1fr; }
+      .hero h1 { font-size: 38px; }
+    }
+  </style>
+</head>
+<body>
+  <header class="hero">
+    <h1>Vendor Management System Demo</h1>
+    <p>A live portfolio preview of a procurement-oriented system for vendor registration, contract tracking, purchase orders, and departmental budget visibility.</p>
+    <div class="cta-row">
+      <a class="btn btn-primary" href="previews/dashboard-preview.html">Open Dashboard Demo</a>
+      <a class="btn btn-secondary" href="previews/registration-preview.html">Open Registration Demo</a>
+      <a class="btn btn-secondary" href="https://github.com/abubakarshahid16/Vendor-Management-System">View Repository</a>
+    </div>
+  </header>
+
+  <main class="container">
+    <section class="section">
+      <h2>What This Demo Shows</h2>
+      <div class="list">
+        <div class="pill"><strong>Dashboard Flow</strong>Overview of procurement sections such as vendors, contracts, purchase orders, and budgets.</div>
+        <div class="pill"><strong>Registration Workflow</strong>Clean vendor onboarding form covering identity, compliance, and rating fields.</div>
+        <div class="pill"><strong>Business Context</strong>Academic project bundle positioned as a vendor-governance and procurement system concept.</div>
+      </div>
+    </section>
+
+    <section class="section">
+      <h2>Interface Screens</h2>
+      <div class="grid">
+        <article class="card">
+          <img src="screenshots/dashboard-preview.png" alt="Vendor dashboard preview">
+          <div class="copy">
+            <h3>Dashboard and Procurement View</h3>
+            <p>This screen highlights the management surface for contracts, orders, budgets, and vendor workflow visibility.</p>
+          </div>
+        </article>
+        <article class="card">
+          <img src="screenshots/registration-preview.png" alt="Vendor registration preview">
+          <div class="copy">
+            <h3>Vendor Registration View</h3>
+            <p>The registration form demonstrates the onboarding side of the system with compliance and performance-oriented fields.</p>
+          </div>
+        </article>
+      </div>
+      <div class="footer">This deployment is a static portfolio demo of the interface and workflow structure preserved in the repository.</div>
+    </section>
+  </main>
+</body>
+</html>

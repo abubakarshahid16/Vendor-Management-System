@@ -2,6 +2,10 @@
 
 A web-based project for managing vendors, contracts, purchase orders, and departmental budget visibility. The system is structured around procurement and vendor-governance workflows and is intended as a practical database-backed business application.
 
+## Live Demo
+
+- GitHub Pages demo: <https://abubakarshahid16.github.io/Vendor-Management-System/>
+
 ## Visual Preview
 
 ![Vendor dashboard preview](docs/screenshots/dashboard-preview.png)
