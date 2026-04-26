@@ -1,31 +1,88 @@
-# Vendor-Management-System
-This repository contain all the files for this vendor management system 
+# Vendor Management System
 
-The Vendor Management System (VMS) is a web-based application designed to manage vendors, contracts, purchase orders, and departmental budgets efficiently. The system ensures proper tracking of vendor performance, contract details, and financial management using a structured database and an intuitive user interface.
+A web-based project for managing vendors, contracts, purchase orders, and departmental budget visibility. The system is structured around procurement and vendor-governance workflows and is intended as a practical database-backed business application.
 
-Key Features:
-Database Management (MySQL)
+## Overview
 
-Vendors Table: Stores vendor details such as name, contact, and compliance status.
-Contracts Table: Tracks contract details, start/end dates, and status.
-Purchase Orders Table: Manages purchase requests linked to vendors and budgets.
-Budgets Table: Tracks department-wise allocated and remaining funds.
-Automations & Data Integrity
+This project focuses on organizing procurement-related operations through a vendor management workflow that includes:
 
-Triggers: Automatically update timestamps on vendor and contract modifications.
-Stored Procedures: Ensure proper data validation and secure vendor registration.
-Front-End (HTML, CSS, JavaScript)
+- vendor registration and profile tracking
+- contract information management
+- purchase order handling
+- department budget awareness
+- database-level automation through triggers and stored procedures
 
-Sidebar Navigation: Provides easy access to vendors, contracts, budgets, and orders.
-Dynamic Forms & Tables: Allow users to add, update, and view vendor data.
-Responsive Design: Ensures accessibility across devices.
-Back-End (Node.js & Express with MySQL)
+The repository also preserves multiple project artifacts such as interface files, diagrams, a report document, and a presentation deck.
 
-REST API Endpoints: Handle vendor CRUD operations.
-Database Connectivity: Secure interaction between the application and MySQL.
-Purpose & Benefits:
-Streamlines vendor registration & contract management.
-Tracks budgets & financial allocations for departments.
-Improves procurement efficiency with purchase order tracking.
-Provides automated updates & data consistency through triggers and stored procedures
+## Main Functional Areas
 
+- Vendor management
+  - store vendor identity, contact details, and compliance-related information
+- Contract management
+  - maintain start dates, end dates, and contract status information
+- Purchase order tracking
+  - connect purchasing activity with vendors and budget usage
+- Budget visibility
+  - support department-level allocation and remaining-funds tracking
+- Data integrity support
+  - use triggers and stored procedures to improve consistency and validation
+
+## Tech Context
+
+The repository description and preserved files indicate a stack centered on:
+
+- Frontend: HTML, CSS, JavaScript
+- Backend: Node.js and Express
+- Database: MySQL
+- Database logic: triggers and stored procedures
+
+## Repository Contents
+
+This repository currently contains:
+
+- front-end HTML pages for the major workflows
+- a database/system diagram in Draw.io format
+- a project report document
+- a presentation deck
+
+Representative files:
+
+- `homepage.html`
+- `contract.html`
+- `purchase_order.html`
+- `performance_evaluation.html`
+- `VENDOR_REGISTRATION_FORM.HTML`
+- `db_project (1).drawio`
+- `Detailed Project Report (2).docx`
+
+## Current Repository Status
+
+This repo is best understood as a preserved academic/project submission bundle rather than a fully packaged production repository.
+
+What is clearly present:
+
+- interface files for multiple system flows
+- project documentation and presentation assets
+- evidence of database-driven vendor-management design
+
+What would improve it further over time:
+
+- adding a complete backend source structure if separated elsewhere
+- adding a setup guide for MySQL schema and Express server startup
+- organizing files into clearer folders such as `frontend/`, `docs/`, and `db/`
+- adding screenshots of the main UI pages directly to the README
+
+## Why This Project Matters
+
+This project is a good portfolio artifact because it demonstrates:
+
+- business process modeling
+- procurement and vendor workflow thinking
+- database-oriented system design
+- project documentation discipline
+- full-system planning beyond a single page or script
+
+## Author
+
+Abubakar Shahid  
+GitHub: <https://github.com/abubakarshahid16>
