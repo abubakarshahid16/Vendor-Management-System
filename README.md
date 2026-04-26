@@ -2,6 +2,12 @@
 
 A web-based project for managing vendors, contracts, purchase orders, and departmental budget visibility. The system is structured around procurement and vendor-governance workflows and is intended as a practical database-backed business application.
 
+## Visual Preview
+
+![Vendor dashboard preview](docs/screenshots/dashboard-preview.png)
+
+![Vendor registration preview](docs/screenshots/registration-preview.png)
+
 ## Overview
 
 This project focuses on organizing procurement-related operations through a vendor management workflow that includes:
@@ -54,6 +60,7 @@ Representative files:
 - `VENDOR_REGISTRATION_FORM.HTML`
 - `db_project (1).drawio`
 - `Detailed Project Report (2).docx`
+- `docs/screenshots/`: README preview images for dashboard and registration flows
 
 ## Current Repository Status
 
@@ -70,7 +77,7 @@ What would improve it further over time:
 - adding a complete backend source structure if separated elsewhere
 - adding a setup guide for MySQL schema and Express server startup
 - organizing files into clearer folders such as `frontend/`, `docs/`, and `db/`
-- adding screenshots of the main UI pages directly to the README
+- expanding the frontend into a fully wired application bundle
 
 ## Why This Project Matters
 
