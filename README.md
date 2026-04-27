@@ -1,58 +1,63 @@
 # Vendor Management System
 
-A web-based project for managing vendors, contracts, purchase orders, and departmental budget visibility. The system is structured around procurement and vendor-governance workflows and is intended as a practical database-backed business application.
+A procurement-focused web project for managing vendors, contracts, purchase orders, and departmental budget visibility.
 
-## Live Demo
+This repository is positioned as a **vendor-governance and procurement workflow system** rather than a generic CRUD exercise.
+
+## Problem this project solves
+
+Organizations that work with many vendors often struggle with:
+
+- scattered vendor records
+- poor visibility into contract status
+- disconnected purchase-order tracking
+- weak budget awareness across departments
+- inconsistent procurement processes
+
+This project addresses that by organizing vendor operations into a structured system with clear business entities and workflow pages.
+
+## What this project does
+
+The system is designed around:
+
+- vendor registration and profile management
+- contract lifecycle tracking
+- purchase-order handling
+- department budget visibility
+- database-level integrity through triggers and stored procedures
+
+## Live demo
 
 - GitHub Pages demo: <https://abubakarshahid16.github.io/Vendor-Management-System/>
 
-## Visual Preview
+## Visual preview
 
 ![Vendor dashboard preview](docs/screenshots/dashboard-preview.png)
 
 ![Vendor registration preview](docs/screenshots/registration-preview.png)
 
-## Overview
+## Main functional areas
 
-This project focuses on organizing procurement-related operations through a vendor management workflow that includes:
+- **Vendor management**: store vendor identity, contact, and profile data
+- **Contract management**: track contract timing and status
+- **Purchase order tracking**: connect vendors with purchasing activity
+- **Budget visibility**: expose department-level allocation and usage
+- **Data integrity support**: use database logic for consistency and validation
 
-- vendor registration and profile tracking
-- contract information management
-- purchase order handling
-- department budget awareness
-- database-level automation through triggers and stored procedures
+## Tech context
 
-The repository also preserves multiple project artifacts such as interface files, diagrams, a report document, and a presentation deck.
-
-## Main Functional Areas
-
-- Vendor management
-  - store vendor identity, contact details, and compliance-related information
-- Contract management
-  - maintain start dates, end dates, and contract status information
-- Purchase order tracking
-  - connect purchasing activity with vendors and budget usage
-- Budget visibility
-  - support department-level allocation and remaining-funds tracking
-- Data integrity support
-  - use triggers and stored procedures to improve consistency and validation
-
-## Tech Context
-
-The repository description and preserved files indicate a stack centered on:
+The repository contents indicate a stack centered on:
 
 - Frontend: HTML, CSS, JavaScript
 - Backend: Node.js and Express
 - Database: MySQL
 - Database logic: triggers and stored procedures
 
-## Repository Contents
+## Repository contents
 
-This repository currently contains:
-
-- front-end HTML pages for the major workflows
-- a database/system diagram in Draw.io format
-- a project report document
+- interface HTML pages for core workflows
+- a system/database diagram in Draw.io format
+- a written project report
 - a presentation deck
 
 Representative files:
@@ -64,36 +69,23 @@ Representative files:
 - `VENDOR_REGISTRATION_FORM.HTML`
 - `db_project (1).drawio`
 - `Detailed Project Report (2).docx`
-- `docs/screenshots/`: README preview images for dashboard and registration flows
 
-## Current Repository Status
+## Why this project matters
 
-This repo is best understood as a preserved academic/project submission bundle rather than a fully packaged production repository.
+- It demonstrates business-process modeling for procurement operations.
+- It shows database-oriented system design rather than only UI work.
+- It reflects workflow thinking across vendors, contracts, budgets, and orders.
+- It is useful as a portfolio piece for business applications and information systems.
 
-What is clearly present:
+## Industrial positioning
 
-- interface files for multiple system flows
-- project documentation and presentation assets
-- evidence of database-driven vendor-management design
+A stronger production-style version would likely add:
 
-What would improve it further over time:
+- structured backend source organization
+- complete database schema and migration files
+- authentication and role-based access
+- audit trails for procurement actions
+- deployment documentation
+- workflow approvals and notifications
 
-- adding a complete backend source structure if separated elsewhere
-- adding a setup guide for MySQL schema and Express server startup
-- organizing files into clearer folders such as `frontend/`, `docs/`, and `db/`
-- expanding the frontend into a fully wired application bundle
-
-## Why This Project Matters
-
-This project is a good portfolio artifact because it demonstrates:
-
-- business process modeling
-- procurement and vendor workflow thinking
-- database-oriented system design
-- project documentation discipline
-- full-system planning beyond a single page or script
-
-## Author
-
-Abubakar Shahid  
-GitHub: <https://github.com/abubakarshahid16>
+This means the repo is best positioned as a **procurement system design and application prototype** with solid business-domain relevance.
