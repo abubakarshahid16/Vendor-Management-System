@@ -55,20 +55,21 @@ The repository contents indicate a stack centered on:
 
 ## Repository contents
 
-- interface HTML pages for core workflows
-- a system/database diagram in Draw.io format
-- a written project report
-- a presentation deck
+- `frontend/`: interface HTML pages for core workflows
+- `docs/diagrams/`: system and database diagrams
+- `docs/reports/`: written project documentation
+- `docs/slides/`: presentation assets
+- `docs/screenshots/`: README preview images
 
 Representative files:
 
-- `homepage.html`
-- `contract.html`
-- `purchase_order.html`
-- `performance_evaluation.html`
-- `VENDOR_REGISTRATION_FORM.HTML`
-- `db_project (1).drawio`
-- `Detailed Project Report (2).docx`
+- `frontend/homepage.html`
+- `frontend/contract.html`
+- `frontend/purchase_order.html`
+- `frontend/performance_evaluation.html`
+- `frontend/VENDOR_REGISTRATION_FORM.HTML`
+- `docs/diagrams/db_project (1).drawio`
+- `docs/reports/Detailed Project Report (2).docx`
 
 ## Why this project matters
 
@@ -89,3 +90,7 @@ A stronger production-style version would likely add:
 - workflow approvals and notifications
 
 This means the repo is best positioned as a **procurement system design and application prototype** with solid business-domain relevance.
+
+## Current structure improvement
+
+The repository has been reorganized so that frontend pages, screenshots, diagrams, reports, and slides are separated into clearer folders instead of being mixed together at the project root.

@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Create Purchase Order</title>
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
+  <style>
+    body {
+      font-family: 'Roboto', sans-serif;
+      background: linear-gradient(to bottom right, #e6f7ff, #d6c1f9);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      margin: 0;
+      padding: 0;
+    }
+    .form-container {
+      background-color: #ffffff;
+      border-radius: 12px;
+      box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+      padding: 30px;
+      width: 100%;
+      max-width: 500px;
+    }
+    h2 {
+      color: #333;
+      margin-bottom: 20px;
+      text-align: center;
+      font-size: 2em;
+    }
+    .form-group {
+      margin-bottom: 20px;
+    }
+    label {
+      display: block;
+      font-weight: 500;
+      color: #555;
+      margin-bottom: 5px;
+    }
+    input[type="number"], input[type="date"], select {
+      width: 100%;
+      padding: 10px;
+      font-size: 1em;
+      border: 1px solid #ddd;
+      border-radius: 8px;
+      margin-top: 5px;
+      box-sizing: border-box;
+    }
+    input[type="number"]:focus, input[type="date"]:focus, select:focus {
+      border-color: #1e90ff;
+    }
+    button {
+      display: block;
+      width: 100%;
+      padding: 10px;
+      background-color: #1e90ff;
+      color: white;
+      font-size: 1.1em;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+      transition: background-color 0.3s;
+      margin-top: 10px;
+    }
+    button:hover {
+      background-color: #1c6ea4;
+    }
+    .footer-text {
+      text-align: center;
+      margin-top: 15px;
+      font-size: 0.9em;
+      color: #777;
+    }
+  </style>
+</head>
+<body>
+  <div class="form-container">
+    <h2>Create Purchase Order</h2>
+    <form id="purchase-order-form">
+      <div class="form-group">
+        <label for="contract">Contract:</label>
+        <select id="contract" name="contract" required>
+          <!-- Populate dynamically with contracts -->
+        </select>
+      </div>
+      <div class="form-group">
+        <label for="order-amount">Order Amount:</label>
+        <input type="number" id="order-amount" name="order-amount" required step="0.01" min="0">
+      </div>
+      <div class="form-group">
+        <label for="order-date">Order Date:</label>
+        <input type="date" id="order-date" name="order-date" required>
+      </div>
+      <div class="form-group">
+        <button type="submit">Create Order</button>
+      </div>
+    </form>
+    <p class="footer-text">* All fields are required</p>
+  </div>
+  <script>
+    // Load contracts dynamically from the server
+    async function loadContracts() {
+      try {
+        const response = await fetch('/get-contracts'); // Fetch contracts from server
+        const contracts = await response.json();
+        
+        if (contracts.length === 0) {
+          alert('No contracts available');
+          return;
+        }
+
+        const contractSelect = document.getElementById('contract');
+        contracts.forEach(contract => {
+          const option = document.createElement('option');
+          option.value = contract.id; // Assuming contract has an 'id' and 'title'
+          option.textContent = contract.title;
+          contractSelect.appendChild(option);
+        });
+      } catch (error) {
+        console.error('Error loading contracts:', error);
+        alert('Error loading contracts.');
+      }
+    }
+
+    // Call the loadContracts function when the page loads
+    window.onload = loadContracts;
+
+    // Handle form submission
+    document.getElementById('purchase-order-form').addEventListener('submit', async function(e) {
+      e.preventDefault();
+
+      const contract = document.getElementById('contract').value;
+      const orderAmount = document.getElementById('order-amount').value;
+      const orderDate = document.getElementById('order-date').value;
+
+      const purchaseOrderData = {
+        contract,
+        orderAmount,
+        orderDate
+      };
+
+      try {
+        const response = await fetch('/create-purchase-order', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json'
+          },
+          body: JSON.stringify(purchaseOrderData)
+        });
+
+        const result = await response.json();
+
+        if (response.ok) {
+          alert('Purchase order created successfully!');
+        } else {
+          alert('Error: ' + result.error);
+        }
+      } catch (error) {
+        console.error('Error:', error);
+        alert('An error occurred while creating the purchase order.');
+      }
+    });
+  </script>
+</body>
+</html>
